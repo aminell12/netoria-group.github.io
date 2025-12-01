@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Zap, TrendingUp, Cpu, Target, Award, Lightbulb, Users } from "lucide-react";
+import { ArrowRight, Zap, TrendingUp, Cpu, Target, Award, Lightbulb, Users, Database, Brain, Shield, Cloud, GitBranch, Workflow } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ServiceCard } from "@/components/ServiceCard";
 import { ValueCard } from "@/components/ValueCard";
@@ -86,6 +86,39 @@ const industries = [
   "Energy & Utilities",
 ];
 
+const expertise = [
+  {
+    icon: Database,
+    title: "Data & Analytics",
+    description: "Transform data into actionable insights with advanced analytics and business intelligence solutions.",
+  },
+  {
+    icon: Brain,
+    title: "Artificial Intelligence",
+    description: "Leverage AI and machine learning to automate processes and unlock new possibilities.",
+  },
+  {
+    icon: Shield,
+    title: "Cybersecurity",
+    description: "Protect your digital assets with comprehensive security strategies and solutions.",
+  },
+  {
+    icon: Cloud,
+    title: "Cloud Solutions",
+    description: "Migrate and optimize your infrastructure with scalable cloud technologies.",
+  },
+  {
+    icon: GitBranch,
+    title: "Digital Transformation",
+    description: "Modernize your operations with cutting-edge digital technologies and methodologies.",
+  },
+  {
+    icon: Workflow,
+    title: "Process Automation",
+    description: "Streamline workflows and boost efficiency through intelligent automation.",
+  },
+];
+
 export default function Home() {
   return (
     <div className="min-h-screen">
@@ -136,7 +169,63 @@ export default function Home() {
         </div>
       </section>
 
-      {/* What We Do Section */}
+      {/* Discover Us Section */}
+      <section className="py-24 bg-card relative overflow-hidden">
+        <div className="absolute inset-0 tech-grid-bg" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+                Discover Netoria Group
+              </h2>
+              <p className="text-lg text-muted-foreground mb-6">
+                We are a forward-thinking consulting firm dedicated to helping organizations navigate 
+                the complexities of digital transformation. Our team of experts combines strategic thinking 
+                with technical excellence to deliver solutions that drive real business impact.
+              </p>
+              <p className="text-lg text-muted-foreground mb-8">
+                With a proven track record across multiple industries, we partner with our clients to 
+                unlock innovation, optimize operations, and accelerate growth in an ever-evolving digital landscape.
+              </p>
+              <Button variant="outline" size="lg" asChild>
+                <Link to="/about">Learn More About Us</Link>
+              </Button>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="grid grid-cols-2 gap-6"
+            >
+              <div className="bg-gradient-card border border-border rounded-2xl p-6 hover:border-primary/50 transition-all duration-300">
+                <div className="text-4xl font-bold text-primary mb-2">10+</div>
+                <p className="text-muted-foreground">Years of Experience</p>
+              </div>
+              <div className="bg-gradient-card border border-border rounded-2xl p-6 hover:border-primary/50 transition-all duration-300">
+                <div className="text-4xl font-bold text-primary mb-2">200+</div>
+                <p className="text-muted-foreground">Projects Delivered</p>
+              </div>
+              <div className="bg-gradient-card border border-border rounded-2xl p-6 hover:border-primary/50 transition-all duration-300">
+                <div className="text-4xl font-bold text-primary mb-2">50+</div>
+                <p className="text-muted-foreground">Expert Consultants</p>
+              </div>
+              <div className="bg-gradient-card border border-border rounded-2xl p-6 hover:border-primary/50 transition-all duration-300">
+                <div className="text-4xl font-bold text-primary mb-2">98%</div>
+                <p className="text-muted-foreground">Client Satisfaction</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Expertise Section */}
       <section className="py-24 bg-background relative">
         <div className="absolute inset-0 tech-lines-bg" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -149,6 +238,49 @@ export default function Home() {
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
               Our Expertise
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Specialized capabilities across key technology domains
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {expertise.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group relative bg-gradient-card border border-border rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 hover:shadow-glow"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+                <div className="relative z-10">
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <item.icon className="h-7 w-7 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 text-foreground">{item.title}</h3>
+                  <p className="text-muted-foreground">{item.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What We Do Section */}
+      <section className="py-24 bg-card relative">
+        <div className="absolute inset-0 tech-lines-bg" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
+              Our Services
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Comprehensive consulting services to drive your digital transformation journey
@@ -244,7 +376,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Industries Section */}
+      {/* Our Sectors Section */}
       <section className="py-24 bg-card relative">
         <div className="absolute inset-0 tech-grid-bg" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -256,10 +388,10 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-              Industries We Support
+              Our Sectors
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Delivering expertise across diverse sectors
+              Delivering expertise across diverse industries
             </p>
           </motion.div>
 

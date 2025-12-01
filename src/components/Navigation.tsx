@@ -19,8 +19,10 @@ export const Navigation = () => {
 
   const navLinks = [
     { path: "/", label: "Home" },
+    { path: "/about", label: "Discover Us" },
+    { path: "/sectors", label: "Our Sectors" },
+    { path: "/expertise", label: "Our Expertise" },
     { path: "/services", label: "Services" },
-    { path: "/about", label: "About" },
     { path: "/contact", label: "Contact" },
   ];
 
